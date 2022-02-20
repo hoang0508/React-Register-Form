@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @layer base {
   body {
     background-color: #eee;
@@ -10,7 +9,6 @@
   }
 }
 
-/* Custom radio */
 .custom-radio {
   width: 10px;
   height: 10px;
@@ -24,17 +22,4 @@
   @apply bg-blue-500;
   box-shadow: 0 0 0 2.5px white,
     0 0 0 5px rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
-/* Custom checkbox */
-.custom-checkbox input:checked + div .custom-checkbox-square {
-  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
-}
-
-.custom-checkbox-square {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

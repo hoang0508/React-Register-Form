@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@layer base {
+  body {
+    background-color: #eee;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+.custom-radio {
+  width: 10px;
+  height: 10px;
+}
+
+.custom-radio > div {
+  box-shadow: 0 0 -0 5px white;
+}
+
+.custom-radio input:checked + div {
+  background-color: red;
+}
