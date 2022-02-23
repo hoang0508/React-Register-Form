@@ -76,25 +76,22 @@ const RegisterHook = () => {
       job: "",
       gender: "male",
     },
-    // yup
-    resolver: yupResolver(schema),
-    // valid
+    // resolver: yupResolver(schema),
     mode: "onChange",
   });
   // console.log(errors);
-  // Watch Gender , radio
+  // Watch Gender
   const watchGender = watch("gender");
   // console.log(watchGender);
   // Submit Form
   const onSubmitHandler = (values) => {
-    // kiểm tra isValid , chưa validation thì dừng chương trình
+    // kiểm tra isValid
     if (!isValid) return;
     // Promise loading , isSubmiting, setTimeout
     return new Promise((resolver) => {
       setTimeout(() => {
         resolver();
         console.log(values);
-        // reset form
         reset({
           username: "",
           email: "",

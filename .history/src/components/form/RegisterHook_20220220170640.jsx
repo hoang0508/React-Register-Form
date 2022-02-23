@@ -38,7 +38,7 @@ const schema = yup
     // Dropdown
     job: yup.string().required("Please dropdown your job"),
     // Term
-    term: yup.boolean().required("Please accept the term and conditions"),
+    term: yup.boolean().required("Please accept the term and conditons"),
   })
   .required();
 
@@ -65,46 +65,20 @@ const RegisterHook = () => {
   // Sử dụng useForm
   const {
     handleSubmit,
-    formState: { errors, isValid, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
     control,
     setValue,
     getValues,
-    reset,
-    watch,
   } = useForm({
     defaultValues: {
       job: "",
-      gender: "male",
     },
-    // yup
     resolver: yupResolver(schema),
-    // valid
-    mode: "onChange",
   });
-  // console.log(errors);
-  // Watch Gender , radio
-  const watchGender = watch("gender");
-  // console.log(watchGender);
+  console.log(errors);
   // Submit Form
   const onSubmitHandler = (values) => {
-    // kiểm tra isValid , chưa validation thì dừng chương trình
-    if (!isValid) return;
-    // Promise loading , isSubmiting, setTimeout
-    return new Promise((resolver) => {
-      setTimeout(() => {
-        resolver();
-        console.log(values);
-        // reset form
-        reset({
-          username: "",
-          email: "",
-          password: "",
-          gender: "male",
-          job: "",
-          term: false,
-        });
-      }, 5000);
-    });
+    console.log(values);
   };
   return (
     <form
@@ -162,21 +136,11 @@ const RegisterHook = () => {
         <label className="cursor-pointer">Gender</label>
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-x-3">
-            <RadioHook
-              control={control}
-              name="gender"
-              value="male"
-              checked={watchGender === "male"}
-            />
+            <RadioHook control={control} name="gender" value="male" />
             <span>Male</span>
           </div>
           <div className="flex items-center gap-x-3">
-            <RadioHook
-              control={control}
-              name="gender"
-              value="female"
-              checked={watchGender === "female"}
-            />
+            <RadioHook control={control} name="gender" value="female" />
             <span>Female</span>
           </div>
         </div>
@@ -193,34 +157,20 @@ const RegisterHook = () => {
           setValue={setValue}
           name="job"
           data={Dropdowndata}
-          dropDowmLabel={"Select your job"}
         />
-        {errors.job && (
-          <p className="text-sm text-red-500">{errors.job.message}</p>
-        )}
       </div>
-      <div className="flex flex-col gap-3">
+      <div className="">
         <CheckboxHook
           control={control}
           text="I accept the terms and conditions"
           name="term"
         />
-        {errors.term && (
-          <p className="text-sm text-red-500">{errors.term.message}</p>
-        )}
       </div>
       <button
         type="submit"
-        className={`w-full p-3 mt-5 bg-blue-500 text-white rounded-lg font-semibold ${
-          isSubmitting ? "opacity-50" : ""
-        }`}
-        disabled={isSubmitting}
+        className="w-full p-3 mt-5 bg-blue-500 text-white rounded-lg font-semibold"
       >
-        {isSubmitting ? (
-          <div className="w-5 h-5 border-2 border-t-2 border-white rounded-full border-t-transparent mx-auto animate-spin"></div>
-        ) : (
-          "Submit"
-        )}
+        Submit
       </button>
     </form>
   );

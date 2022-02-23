@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useWatch } from "react-hook-form";
 import useClickOutSide from "../../hooks/UseClickOutSide";
 
@@ -7,12 +7,10 @@ const DropdowmHook = ({ control, setValue, name, data, dropDowmLabel }) => {
   const { show, setShow, nodeRef } = useClickOutSide();
 
   // UseWatch====
-  const dropDownValue = useWatch({
+  const jobValue = useWatch({
     control,
     name: "job",
-    defaultValue: "",
   });
-  console.log(dropDownValue);
   // Click dropdown value
   const handleClickDropdown = (e) => {
     // setValue, (e.target.dataset.value) ==> custom atribute
@@ -22,14 +20,8 @@ const DropdowmHook = ({ control, setValue, name, data, dropDowmLabel }) => {
     // setLabel
     setLabel(e.target.textContent);
   };
-  // useState label
+  // useState
   const [label, setLabel] = useState(dropDowmLabel);
-  // useEffect == , cập nhật render lại label
-  useEffect(() => {
-    if (dropDownValue === "") {
-      setLabel(dropDowmLabel);
-    }
-  }, [dropDownValue]);
   return (
     <div className="relative" ref={nodeRef}>
       <div

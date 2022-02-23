@@ -12,7 +12,6 @@ const DropdowmHook = ({ control, setValue, name, data, dropDowmLabel }) => {
     name: "job",
     defaultValue: "",
   });
-  console.log(dropDownValue);
   // Click dropdown value
   const handleClickDropdown = (e) => {
     // setValue, (e.target.dataset.value) ==> custom atribute
@@ -26,7 +25,7 @@ const DropdowmHook = ({ control, setValue, name, data, dropDowmLabel }) => {
   const [label, setLabel] = useState(dropDowmLabel);
   // useEffect == , cập nhật render lại label
   useEffect(() => {
-    if (dropDownValue === "") {
+    if (dropDownValue) {
       setLabel(dropDowmLabel);
     }
   }, [dropDownValue]);

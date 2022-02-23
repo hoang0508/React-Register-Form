@@ -5,7 +5,6 @@ const CheckboxHook = ({ control, text, ...props }) => {
   const { field } = useController({
     control,
     name: props.name,
-    defaultValue: false,
   });
   // console.log(field);
   return (

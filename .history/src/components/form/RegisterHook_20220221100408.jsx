@@ -76,30 +76,24 @@ const RegisterHook = () => {
       job: "",
       gender: "male",
     },
-    // yup
-    resolver: yupResolver(schema),
-    // valid
+    // resolver: yupResolver(schema),
     mode: "onChange",
   });
-  // console.log(errors);
-  // Watch Gender , radio
-  const watchGender = watch("gender");
-  // console.log(watchGender);
+  console.log(errors);
   // Submit Form
   const onSubmitHandler = (values) => {
-    // kiểm tra isValid , chưa validation thì dừng chương trình
+    // kiểm tra isValid
     if (!isValid) return;
     // Promise loading , isSubmiting, setTimeout
     return new Promise((resolver) => {
       setTimeout(() => {
         resolver();
         console.log(values);
-        // reset form
         reset({
           username: "",
           email: "",
           password: "",
-          gender: "male",
+          gender: "",
           job: "",
           term: false,
         });
@@ -162,21 +156,11 @@ const RegisterHook = () => {
         <label className="cursor-pointer">Gender</label>
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-x-3">
-            <RadioHook
-              control={control}
-              name="gender"
-              value="male"
-              checked={watchGender === "male"}
-            />
+            <RadioHook control={control} name="gender" value="male" />
             <span>Male</span>
           </div>
           <div className="flex items-center gap-x-3">
-            <RadioHook
-              control={control}
-              name="gender"
-              value="female"
-              checked={watchGender === "female"}
-            />
+            <RadioHook control={control} name="gender" value="female" />
             <span>Female</span>
           </div>
         </div>
